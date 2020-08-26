@@ -1,16 +1,50 @@
-# flutter_maps
+# Install
+```
+cd flutter_mapbox_gps_realtime
 
-A new Flutter project.
+flutter pub get
 
-## Getting Started
+```
 
-This project is a starting point for a Flutter application.
+# Configurando (Android)
+Vá até o diretório *android/app/src/main/AndroidManifest.xml*
+e adicione as permissões abaixo:
+```
+<manifest...>
 
-A few resources to get you started if this is your first Flutter project:
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+```
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+No mesmo arquivo, adicione a meta com seu token do Mapbox:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+<application ...>
+        <meta-data android:name="com.mapbox.token" android:value="YOUR_TOKEN_MAPBOX" />
+```
+
+Por ultimo configure o Gandle para aceitar o SDKMinimo de 20.
+Vá para *android/app/src/build.gradle*
+```
+defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        ...
+        minSdkVersion 20
+        ...
+}
+```
+
+# Running
+```
+flutter run --release (60 FPS)
+```
+
+# Features
+* Localização em tempo real.
+* Indicador da direção que o usuário está indo. 
+
+# Prints
+![](print.png)
