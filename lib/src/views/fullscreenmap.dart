@@ -11,12 +11,13 @@ class FullScreenMap extends StatefulWidget {
 
 class _FullScreenMapState extends State<FullScreenMap> {  
   MapboxMapController mapController;
-  String _mapStyle = "mapbox://styles/impervictor/ckebyw5h91c5719rmxrv9erhl";
+  String _mapStyle = "mapbox://YOUR_CUSTOM_MAP";
   bool _scrollGesturesEnabled = true;
   bool _tiltGesturesEnabled = true;
   bool _zoomGesturesEnabled = true;
   bool _myLocationEnabled = true;
   bool _rotateGesturesEnabled = true;
+   MinMaxZoomPreference _minMaxZoomPreference = MinMaxZoomPreference.unbounded;
   LatLng _currentLocation = LatLng(-22.4891277, -43.4798553);
   LatLng _userPosition;
 
@@ -67,8 +68,7 @@ class _FullScreenMapState extends State<FullScreenMap> {
         tiltGesturesEnabled: _tiltGesturesEnabled,
         scrollGesturesEnabled: _scrollGesturesEnabled,
         rotateGesturesEnabled: _rotateGesturesEnabled,
-        styleString: _mapStyle,
-        
+        minMaxZoomPreference: _minMaxZoomPreference,       
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () { _moveCameraToUser(_userPosition); },
