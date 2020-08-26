@@ -39,7 +39,9 @@ defaultConfig {
 
 # Running
 ```
-flutter run --release (60 FPS)
+flutter run 
+or
+flutter run --profile (60 FPS)
 ```
 
 # Features
