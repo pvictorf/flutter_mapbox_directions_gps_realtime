@@ -61,7 +61,7 @@ class _FullScreenMapState extends State<FullScreenMap> {
         onMapCreated: _onMapCreated,
         initialCameraPosition: CameraPosition(target: _currentLocation, zoom: 15),
         myLocationTrackingMode: MyLocationTrackingMode.TrackingGPS,
-        myLocationRenderMode: MyLocationRenderMode.COMPASS,
+        myLocationRenderMode: MyLocationRenderMode.GPS,
         myLocationEnabled: _myLocationEnabled,
         zoomGesturesEnabled: _zoomGesturesEnabled,
         tiltGesturesEnabled: _tiltGesturesEnabled,
