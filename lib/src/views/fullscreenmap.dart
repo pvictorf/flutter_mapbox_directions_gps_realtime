@@ -35,13 +35,17 @@ class _FullScreenMapState extends State<FullScreenMap> {
 
     if (hasPermissions != PermissionStatus.denied) {
       var locationData = await location.getLocation();
-      _userPosition = LatLng(locationData.latitude, locationData.longitude);
+      setState(() {
+        _userPosition = LatLng(locationData.latitude, locationData.longitude);
+      });
     }
   }
 
-  void _moveCameraToUser(LatLng latLng) {
+  void _moveCameraToUser(LatLng latLng, [double zoom = 14.0]) {
     if (mapController != null) {
-      mapController.animateCamera(CameraUpdate.newLatLng(latLng));
+      mapController.animateCamera(CameraUpdate.newCameraPosition(
+        CameraPosition(target: latLng, zoom: zoom),
+      ));
     }
   }
 
