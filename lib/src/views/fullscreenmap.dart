@@ -11,6 +11,7 @@ class FullScreenMap extends StatefulWidget {
 
 class _FullScreenMapState extends State<FullScreenMap> {
   MapboxMapController mapController;
+  String _mapStyle = "mapbox://styles/mapbox/streets-v11";
   MinMaxZoomPreference _minMaxZoomPreference = MinMaxZoomPreference.unbounded;
   CameraTargetBounds _cameraTargetBounds = CameraTargetBounds.unbounded;
   bool _scrollGesturesEnabled = true;
@@ -54,34 +55,28 @@ class _FullScreenMapState extends State<FullScreenMap> {
   void _onMapCreated(MapboxMapController controller) {
     mapController = controller;
     mapController.setTelemetryEnabled(false);
+    mapController.invalidateAmbientCache();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: MapboxMap(
-          onMapCreated: _onMapCreated,
-          initialCameraPosition:
-              CameraPosition(target: _currentLocation, zoom: 14),
-          myLocationTrackingMode: MyLocationTrackingMode.TrackingGPS,
-          myLocationRenderMode: MyLocationRenderMode.GPS,
-          myLocationEnabled: _myLocationEnabled,
-          zoomGesturesEnabled: _zoomGesturesEnabled,
-          tiltGesturesEnabled: _tiltGesturesEnabled,
-          scrollGesturesEnabled: _scrollGesturesEnabled,
-          rotateGesturesEnabled: _rotateGesturesEnabled,
-          minMaxZoomPreference: _minMaxZoomPreference,
-          compassEnabled: _compassEnabled,
-          cameraTargetBounds: _cameraTargetBounds,
-          trackCameraPosition: _trackCameraPosition,
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _moveCameraToUser(_userPosition);
-        },
-        child: Icon(Icons.gps_fixed),
+    return Container(
+      child: MapboxMap(
+        onMapCreated: _onMapCreated,
+        initialCameraPosition:
+            CameraPosition(target: _currentLocation, zoom: 14),
+        myLocationTrackingMode: MyLocationTrackingMode.TrackingGPS,
+        myLocationRenderMode: MyLocationRenderMode.GPS,
+        myLocationEnabled: _myLocationEnabled,
+        zoomGesturesEnabled: _zoomGesturesEnabled,
+        tiltGesturesEnabled: _tiltGesturesEnabled,
+        scrollGesturesEnabled: _scrollGesturesEnabled,
+        rotateGesturesEnabled: _rotateGesturesEnabled,
+        minMaxZoomPreference: _minMaxZoomPreference,
+        compassEnabled: _compassEnabled,
+        cameraTargetBounds: _cameraTargetBounds,
+        trackCameraPosition: _trackCameraPosition,
+        styleString: _mapStyle,
       ),
     );
   }
