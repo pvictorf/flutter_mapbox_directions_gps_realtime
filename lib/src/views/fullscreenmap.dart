@@ -13,6 +13,7 @@ class _FullScreenMapState extends State<FullScreenMap> {
   MapboxMapController mapController;
   MinMaxZoomPreference _minMaxZoomPreference = MinMaxZoomPreference.unbounded;
   CameraTargetBounds _cameraTargetBounds = CameraTargetBounds.unbounded;
+  List<Object> _featureQueryFilter;
   bool _isMoving = false;
   bool _scrollGesturesEnabled = true;
   bool _tiltGesturesEnabled = true;
@@ -69,6 +70,16 @@ class _FullScreenMapState extends State<FullScreenMap> {
           trackCameraPosition: _trackCameraPosition,
           compassEnabled: _compassEnabled,
           cameraTargetBounds: _cameraTargetBounds,
+          onMapClick: (point, latLng) async {
+            print(
+                "Map click: ${point.x},${point.y}   ${latLng.latitude}/${latLng.longitude}");
+            print("Filter $_featureQueryFilter");
+            List features = await mapController.queryRenderedFeatures(
+                point, [], _featureQueryFilter);
+            if (features.length > 0) {
+              print(features[0]);
+            }
+          },
         ),
       ),
       floatingActionButton: FloatingActionButton(
