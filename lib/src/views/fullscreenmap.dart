@@ -72,7 +72,6 @@ class _FullScreenMapState extends State<FullScreenMap> {
             scrollGesturesEnabled: _scrollGesturesEnabled,
             rotateGesturesEnabled: _rotateGesturesEnabled,
             minMaxZoomPreference: _minMaxZoomPreference,
-            styleString: _mapStyle,
           ),
         ),
       ),
