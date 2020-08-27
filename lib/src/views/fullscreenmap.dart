@@ -24,7 +24,7 @@ class _FullScreenMapState extends State<FullScreenMap> {
   @override
   void initState() {
     super.initState();
-   // _getUserLocation();
+    _getUserLocation();
   }
 
   void _getUserLocation() async {
@@ -59,6 +59,8 @@ class _FullScreenMapState extends State<FullScreenMap> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
+        child: Expanded(
+          flex: 1,
           child: MapboxMap(
             onMapCreated: _onMapCreated,
             initialCameraPosition: CameraPosition(target: _currentLocation, zoom: 15),
@@ -72,6 +74,7 @@ class _FullScreenMapState extends State<FullScreenMap> {
             minMaxZoomPreference: _minMaxZoomPreference,
             styleString: _mapStyle,
           ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
