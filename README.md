@@ -66,3 +66,10 @@ flutter run --profile (60 FPS)
 
 # Prints
 ![](print.png)
+
+# Docs and References
+Mapbox:
+https://docs.mapbox.com/android/maps/examples/animate-the-map-camera/
+
+Flutter Mapbox Lib:
+https://github.com/tobrun/flutter-mapbox-gl
