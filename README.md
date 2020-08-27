@@ -38,7 +38,7 @@ defaultConfig {
 ```
 **[Importante!]** 
 - No widget MapBox() todas as váriaveis de configuração apesar de não serem obrigatórias, são importantes para o funcionamento correto do mapa e sua performance.
-- O **marcador GPS** só aparece quando se tem permissão de localização do usuário, tenha em solicitar permissão de localização **antes de exibir o mapa**.
+- O **marcador GPS** só aparece quando se tem permissão de localização do usuário, tenha em mente que você **deve solicitar permissão de localização antes de exibir o mapa**.
 
 ```
   MapboxMapController mapController;
