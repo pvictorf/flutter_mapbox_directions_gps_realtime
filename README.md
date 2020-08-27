@@ -26,7 +26,7 @@ No mesmo arquivo, adicione a meta com seu token do Mapbox:
         <meta-data android:name="com.mapbox.token" android:value="YOUR_TOKEN_MAPBOX" />
 ```
 
-Por ultimo configure o Gandle para aceitar o SDKMinimo de 20.
+Configure o Gandle para aceitar o SDKMinimo de 20.
 Vá para *android/app/src/build.gradle*
 ```
 defaultConfig {
@@ -36,6 +36,8 @@ defaultConfig {
         ...
 }
 ```
+[Importante!] 
+No widget MapBox() todas as váriaveis de configuração apesar de não serem obrigatórias, são importantes para o funcionamento correto do mapa e sua performance.
 
 # Running
 ```
