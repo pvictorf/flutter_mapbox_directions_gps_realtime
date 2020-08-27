@@ -24,7 +24,7 @@ class _FullScreenMapState extends State<FullScreenMap> {
   @override
   void initState() {
     super.initState();
-    _getUserLocation();
+   // _getUserLocation();
   }
 
   void _getUserLocation() async {
@@ -58,20 +58,25 @@ class _FullScreenMapState extends State<FullScreenMap> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: MapboxMap(
-        onMapCreated: _onMapCreated,
-        initialCameraPosition: CameraPosition(target: _currentLocation, zoom: 15),
-        myLocationTrackingMode: MyLocationTrackingMode.TrackingGPS,
-        myLocationRenderMode: MyLocationRenderMode.GPS,
-        myLocationEnabled: _myLocationEnabled,
-        zoomGesturesEnabled: _zoomGesturesEnabled,
-        tiltGesturesEnabled: _tiltGesturesEnabled,
-        scrollGesturesEnabled: _scrollGesturesEnabled,
-        rotateGesturesEnabled: _rotateGesturesEnabled,
-        minMaxZoomPreference: _minMaxZoomPreference,       
+      body: Center(
+          child: MapboxMap(
+            onMapCreated: _onMapCreated,
+            initialCameraPosition: CameraPosition(target: _currentLocation, zoom: 15),
+            myLocationTrackingMode: MyLocationTrackingMode.TrackingGPS,
+            myLocationRenderMode: MyLocationRenderMode.GPS,
+            myLocationEnabled: _myLocationEnabled,
+            zoomGesturesEnabled: _zoomGesturesEnabled,
+            tiltGesturesEnabled: _tiltGesturesEnabled,
+            scrollGesturesEnabled: _scrollGesturesEnabled,
+            rotateGesturesEnabled: _rotateGesturesEnabled,
+            minMaxZoomPreference: _minMaxZoomPreference,
+            styleString: _mapStyle,
+          ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () { _moveCameraToUser(_userPosition); },
+        onPressed: () {
+          _moveCameraToUser(_userPosition);
+        },
         child: Icon(Icons.gps_fixed),
       ),
     );
