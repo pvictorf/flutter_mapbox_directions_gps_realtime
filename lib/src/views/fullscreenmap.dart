@@ -63,7 +63,7 @@ class _FullScreenMapState extends State<FullScreenMap> {
           flex: 1,
           child: MapboxMap(
             onMapCreated: _onMapCreated,
-            initialCameraPosition: CameraPosition(target: _currentLocation, zoom: 15),
+            initialCameraPosition: CameraPosition(target: _currentLocation, zoom: 14),
             myLocationTrackingMode: MyLocationTrackingMode.TrackingGPS,
             myLocationRenderMode: MyLocationRenderMode.GPS,
             myLocationEnabled: _myLocationEnabled,
