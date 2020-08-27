@@ -58,21 +58,20 @@ class _FullScreenMapState extends State<FullScreenMap> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Expanded(
-          flex: 1,
-          child: MapboxMap(
-            onMapCreated: _onMapCreated,
-            initialCameraPosition: CameraPosition(target: _currentLocation, zoom: 14),
-            myLocationTrackingMode: MyLocationTrackingMode.TrackingGPS,
-            myLocationRenderMode: MyLocationRenderMode.GPS,
-            myLocationEnabled: _myLocationEnabled,
-            zoomGesturesEnabled: _zoomGesturesEnabled,
-            tiltGesturesEnabled: _tiltGesturesEnabled,
-            scrollGesturesEnabled: _scrollGesturesEnabled,
-            rotateGesturesEnabled: _rotateGesturesEnabled,
-            minMaxZoomPreference: _minMaxZoomPreference,
-          ),
+      body: Container(
+        child: MapboxMap(
+          onMapCreated: _onMapCreated,
+          initialCameraPosition:
+              CameraPosition(target: _currentLocation, zoom: 15),
+          myLocationTrackingMode: MyLocationTrackingMode.TrackingGPS,
+          myLocationRenderMode: MyLocationRenderMode.GPS,
+          myLocationEnabled: _myLocationEnabled,
+          zoomGesturesEnabled: _zoomGesturesEnabled,
+          tiltGesturesEnabled: _tiltGesturesEnabled,
+          scrollGesturesEnabled: _scrollGesturesEnabled,
+          rotateGesturesEnabled: _rotateGesturesEnabled,
+          minMaxZoomPreference: _minMaxZoomPreference,
+          //styleString: _mapStyle,
         ),
       ),
       floatingActionButton: FloatingActionButton(
