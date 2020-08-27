@@ -36,9 +36,23 @@ defaultConfig {
         ...
 }
 ```
-[Importante!] 
+**[Importante!]** 
 No widget MapBox() todas as váriaveis de configuração apesar de não serem obrigatórias, são importantes para o funcionamento correto do mapa e sua performance.
 
+```
+  MapboxMapController mapController;
+  MinMaxZoomPreference _minMaxZoomPreference = MinMaxZoomPreference.unbounded;
+  CameraTargetBounds _cameraTargetBounds = CameraTargetBounds.unbounded;
+  List<Object> _featureQueryFilter;
+  bool _scrollGesturesEnabled = true;
+  bool _tiltGesturesEnabled = true;
+  bool _zoomGesturesEnabled = true;
+  bool _myLocationEnabled = true;
+  bool _rotateGesturesEnabled = true;
+  bool _compassEnabled = true;
+  bool _trackCameraPosition = true;
+  LatLng _currentLocation = LatLng(0.0, 0.0);
+```
 # Running
 ```
 flutter run 
