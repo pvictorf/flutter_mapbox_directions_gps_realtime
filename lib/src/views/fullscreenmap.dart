@@ -9,23 +9,20 @@ class FullScreenMap extends StatefulWidget {
   _FullScreenMapState createState() => _FullScreenMapState();
 }
 
-class _FullScreenMapState extends State<FullScreenMap> {  
+class _FullScreenMapState extends State<FullScreenMap> {
   MapboxMapController mapController;
-  String _mapStyle = "mapbox://YOUR_CUSTOM_MAP";
+  MinMaxZoomPreference _minMaxZoomPreference = MinMaxZoomPreference.unbounded;
+  CameraTargetBounds _cameraTargetBounds = CameraTargetBounds.unbounded;
+  bool _isMoving = false;
   bool _scrollGesturesEnabled = true;
   bool _tiltGesturesEnabled = true;
   bool _zoomGesturesEnabled = true;
   bool _myLocationEnabled = true;
   bool _rotateGesturesEnabled = true;
-   MinMaxZoomPreference _minMaxZoomPreference = MinMaxZoomPreference.unbounded;
+  bool _compassEnabled = true;
+  bool _trackCameraPosition = true;
   LatLng _currentLocation = LatLng(-22.4891277, -43.4798553);
   LatLng _userPosition;
-
-  @override
-  void initState() {
-    super.initState();
-    _getUserLocation();
-  }
 
   void _getUserLocation() async {
     Location location = Location();
@@ -33,19 +30,16 @@ class _FullScreenMapState extends State<FullScreenMap> {
 
     if (hasPermissions != PermissionStatus.granted) {
       hasPermissions = await location.requestPermission();
-    } 
+    }
 
     if (hasPermissions != PermissionStatus.denied) {
       var locationData = await location.getLocation();
       _userPosition = LatLng(locationData.latitude, locationData.longitude);
-      _moveCameraToUser(_userPosition);
     }
-    
   }
 
   void _moveCameraToUser(LatLng latLng) {
-    print(latLng);
-    if(mapController != null) {
+    if (mapController != null) {
       mapController.animateCamera(CameraUpdate.newLatLng(latLng));
     }
   }
@@ -53,6 +47,7 @@ class _FullScreenMapState extends State<FullScreenMap> {
   void _onMapCreated(MapboxMapController controller) {
     mapController = controller;
     mapController.setTelemetryEnabled(false);
+    _getUserLocation();
   }
 
   @override
@@ -71,7 +66,9 @@ class _FullScreenMapState extends State<FullScreenMap> {
           scrollGesturesEnabled: _scrollGesturesEnabled,
           rotateGesturesEnabled: _rotateGesturesEnabled,
           minMaxZoomPreference: _minMaxZoomPreference,
-          //styleString: _mapStyle,
+          trackCameraPosition: _trackCameraPosition,
+          compassEnabled: _compassEnabled,
+          cameraTargetBounds: _cameraTargetBounds,
         ),
       ),
       floatingActionButton: FloatingActionButton(
