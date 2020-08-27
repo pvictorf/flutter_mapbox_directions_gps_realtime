@@ -19,8 +19,15 @@ class _FullScreenMapState extends State<FullScreenMap> {
   bool _myLocationEnabled = true;
   bool _rotateGesturesEnabled = true;
   bool _compassEnabled = true;
+  bool _trackCameraPosition = true;
   LatLng _currentLocation = LatLng(-22.4891277, -43.4798553);
   LatLng _userPosition;
+
+  @override
+  void initState() {
+    super.initState();
+    _getUserLocation();
+  }
 
   void _getUserLocation() async {
     Location location = Location();
@@ -40,16 +47,13 @@ class _FullScreenMapState extends State<FullScreenMap> {
 
   void _moveCameraToUser(LatLng latLng) {
     if (mapController != null) {
-      mapController.animateCamera(
-        CameraUpdate.newLatLng(latLng)
-      );
+      mapController.animateCamera(CameraUpdate.newLatLng(latLng));
     }
   }
 
   void _onMapCreated(MapboxMapController controller) {
     mapController = controller;
     mapController.setTelemetryEnabled(false);
-    _getUserLocation();
   }
 
   @override
@@ -58,7 +62,8 @@ class _FullScreenMapState extends State<FullScreenMap> {
       body: Container(
         child: MapboxMap(
           onMapCreated: _onMapCreated,
-          initialCameraPosition: CameraPosition(target: _currentLocation, zoom: 14),
+          initialCameraPosition:
+              CameraPosition(target: _currentLocation, zoom: 14),
           myLocationTrackingMode: MyLocationTrackingMode.TrackingGPS,
           myLocationRenderMode: MyLocationRenderMode.GPS,
           myLocationEnabled: _myLocationEnabled,
@@ -69,7 +74,7 @@ class _FullScreenMapState extends State<FullScreenMap> {
           minMaxZoomPreference: _minMaxZoomPreference,
           compassEnabled: _compassEnabled,
           cameraTargetBounds: _cameraTargetBounds,
-          onMapClick: (point, latLng) async {},
+          trackCameraPosition: _trackCameraPosition,
         ),
       ),
       floatingActionButton: FloatingActionButton(
