@@ -64,9 +64,11 @@ flutter run --profile (60 FPS)
 # Features
 * Localização em tempo real.
 * Indicador da direção que o usuário está indo. 
+* Rotas de um ponto a outro.
 
 # Prints
 ![](print.png)
+![](print2.png)
 
 # Docs and References
 Mapbox:
