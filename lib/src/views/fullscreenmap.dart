@@ -72,9 +72,11 @@ class _FullScreenMapState extends State<FullScreenMap> {
     List<LatLng> _geometry = [];
 
     String url =
-        "https://api.mapbox.com/directions/v5/mapbox/driving-traffic/$startCoords;$endCoords?alternatives=true&geometries=$geometries&steps=true&access_token=$_access_token";
+        "https://api.mapbox.com/directions/v5/mapbox/driving-traffic/$startCoords;$endCoords?alternatives=false&geometries=$geometries&steps=false&overview=full&access_token=$_access_token";
 
     var response = await http.get(url);
+    print(url);
+        
     if (response.statusCode == 200) {
       var json = convert.jsonDecode(response.body);
 
@@ -82,7 +84,7 @@ class _FullScreenMapState extends State<FullScreenMap> {
 
       coordinates
               .forEach((coords) => _geometry.add(LatLng(coords[1], coords[0])));
-
+      
       await mapController.clearLines();
       await mapController.addLine(
         LineOptions(
