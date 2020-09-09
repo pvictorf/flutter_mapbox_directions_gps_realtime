@@ -64,7 +64,7 @@ flutter run --profile (60 FPS)
 # Features
 * Localização em tempo real.
 * Indicador da direção que o usuário está indo. 
-* Rotas de um ponto a outro.
+* Rotas de um ponto a outro.  (pressione por 2 segundos em qualquer localização do mapa)
 
 # Prints
 ![](print.png)
